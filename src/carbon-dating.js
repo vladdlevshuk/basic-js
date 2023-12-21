@@ -18,17 +18,14 @@ const HALF_LIFE_PERIOD = 5730;
  *
  */
 function dateSample(sampleActivity) {
-  // Проверяем, является ли sampleActivity строкой и парсим его
   const parsedActivity = parseFloat(sampleActivity);
 
-  // Проверяем корректность входных данных
   if (typeof sampleActivity !== 'string' || isNaN(parsedActivity) || parsedActivity <= 0 || parsedActivity > MODERN_ACTIVITY) {
     return false;
   }
 
-  // Вычисляем возраст по формуле и возвращаем результат
   const age = Math.ceil(Math.log(MODERN_ACTIVITY / parsedActivity) / (0.693 / HALF_LIFE_PERIOD));
-  
+
   return age;
 }
 
